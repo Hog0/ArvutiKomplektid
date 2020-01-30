@@ -8,7 +8,8 @@ using System.Web.Http;
 
 namespace ArvutiKomplektid.Models
 {
-    public class ArvutiKomplektid : ApiController
+    public class ArvutiTellimus
+
     {
 
         public int Id { get; set; }
