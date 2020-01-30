@@ -14,11 +14,11 @@ namespace ArvutiKomplektid.Models
         public int Id { get; set; }
         public string Kirjeldus { get; set; }
         [Range(0, 1)]
-        public int Korpus { get; set; }
+        public int Korpus { get; set; } = 0;
         [Range(0, 1)]
-        public int Kuvar { get; set; }
+        public int Kuvar { get; set; } = 0;
         [Range(0, 1)]
-        public int Pakitud { get; set; }
+        public int Pakitud { get; set; } = 0;
 
 
     }
