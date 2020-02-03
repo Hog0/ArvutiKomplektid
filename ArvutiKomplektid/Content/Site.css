@@ -1,6 +1,13 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #d0ebfb;
+    padding-top: 50px;
+    padding-bottom: 20px;
+    padding: 0, 20px;
+    color: #070f26;
+    font-size: 1.25rem;
+    margin: 0;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +28,52 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+a {
+    color: #5df852;
+    outline: none;
+    padding: 0;
+    text-decoration: underline;
+    font-size: 1.5rem;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #cbcbcb;
+}
+
+    a:link, a:visited, a:active, a:hover {
+        color: orange;
+    }
+
+.review {
+    padding: 2px;
+    border-bottom: 2px solid black;
+    padding-bottom: 10px;
+}
+
+.review h4 {
+    color: maroon;
+    padding: 5px;
+    background: #cccc99;
+}
+
+.p {
+    font-size: 1rem;
+}
+
+.nav > li > a {
+    padding: 10px 15px;
+}
+
+tr > td, .table > tfoot > tr > td {
+    font-size: 1.5rem;
+}
+
+.jumbotron{
+    background-color: #ffd4d4;
+}
+
+hr {
+    border-top: 1px solid #000;
 }

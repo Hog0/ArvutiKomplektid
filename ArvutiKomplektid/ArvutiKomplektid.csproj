@@ -263,6 +263,7 @@
     <Content Include="Views\ArvutiTellimus\Lisa.cshtml" />
     <Content Include="Views\ArvutiTellimus\KorpusKuvar.cshtml" />
     <Content Include="Views\ArvutiTellimus\PakimisLeht.cshtml" />
+    <Content Include="Views\ArvutiTellimus\Statistikaleht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -103,12 +103,13 @@ namespace ArvutiKomplektid.Controllers
             return RedirectToAction("PakimisLeht");
         }
 
-        public ActionResult Statistikaleht(int id)
+        public ActionResult Statistikaleht()
         {
-            var pakis = db.Arvutitellimused
-              .Where(u => u.Korpus >= 0 && u.Kuvar >= 0 && u.Pakitud >= 0)
-              .ToList();
-            return View(pakis);
+            ViewBag.koikkokku = db.Arvutitellimused.Count();
+            ViewBag.valmis = db.Arvutitellimused
+                .Where(u => u.Pakitud == 1)
+                .Count();
+            return View();
         }
 
 
