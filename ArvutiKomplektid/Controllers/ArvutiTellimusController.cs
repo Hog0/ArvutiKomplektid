@@ -85,7 +85,7 @@ namespace ArvutiKomplektid.Controllers
 
         public ActionResult PakimisLeht()
         {
-            string[] valmis = { "", "", "Olemas", "Ei Ole Olemas" };
+            string[] olemas = { "", "", "Olemas", "Ei Ole Olemas" };
             var model = db.Arvutitellimused
               .OrderBy(u => u.Kirjeldus)
               .Where(u => u.Korpus == 1 && u.Kuvar == 1 && u.Pakitud == 0)
@@ -95,8 +95,8 @@ namespace ArvutiKomplektid.Controllers
                   Kirjeldus = u.Kirjeldus,
                   Komplekt = u.Komplekt, 
                   Kuvar = u.Kuvar==0?"":u.Kuvar==1?"Olemas": "Ei Ole Olemas",
-                  Korpus = u.Korpus == 0 ? "" : u.Korpus == 1 ? "Olemas" : "Ei Ole Olemas",
-                  Pakitud = u.Pakitud == 0 ? "" : u.Pakitud == 1 ? "Pakitud" : "Ei Ole Pakitud",
+                  Korpus = u.Korpus == 0?"":u.Korpus==1?"Olemas" : "Ei Ole Olemas",
+                  Pakitud = u.Pakitud == 0?"": u.Pakitud==1?"Pakitud" : "Ei Ole Pakitud",
               }).ToList();
             return View(model);
         }

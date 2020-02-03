@@ -43,6 +43,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Pakitud)
         </td>
+        <td>
+            @Html.ActionLink("Pakitud", "PakimisLehtMuut", new { id = item.Id, Komplekt = 1 })
+        </td>
     </tr>
 }
 

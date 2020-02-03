@@ -1,13 +1,18 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #d0ebfb;
+    background-color: #2142e0;
     padding-top: 50px;
     padding-bottom: 20px;
     padding: 0, 20px;
-    color: #070f26;
+    color: #ffff;
     font-size: 1.25rem;
     margin: 0;
+    background-image: url(/img/backpicture.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 0.7;
+    filter: alpha(opacity=50);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -30,6 +35,12 @@ textarea {
     max-width: 280px;
 }
 
+.navbar {
+    background-image: url('../img/backroundnav.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 a {
     color: #5df852;
     outline: none;
@@ -42,24 +53,16 @@ a {
     color: #cbcbcb;
 }
 
-    a:link, a:visited, a:active, a:hover {
-        color: orange;
-    }
-
-.review {
-    padding: 2px;
-    border-bottom: 2px solid black;
-    padding-bottom: 10px;
+a:link, a:visited, a:active, a:hover {
+    color: orange;
 }
 
-.review h4 {
-    color: maroon;
-    padding: 5px;
-    background: #cccc99;
+.table {
+    border: 1px solid crimson;
 }
 
-.p {
-    font-size: 1rem;
+p {
+    font-size: 16px;
 }
 
 .nav > li > a {
@@ -70,10 +73,14 @@ tr > td, .table > tfoot > tr > td {
     font-size: 1.5rem;
 }
 
-.jumbotron{
-    background-color: #a7d6fe;
+tr:hover td {
+    background-color: #ff9891;
+}
+
+.jumbotron {
+    background-color: rgba(192, 213, 231, 0.5);
 }
 
 hr {
-    border-top: 1px solid #000;
+    border-top: 1px solid #ffff;
 }

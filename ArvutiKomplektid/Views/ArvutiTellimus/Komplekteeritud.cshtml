@@ -38,8 +38,7 @@
             @Html.DisplayFor(modelItem => item.Komplekt)
         </td>
         <td>
-            @Html.ActionLink("Komplekteeritud", "KomplekteeritudMuut", new { id = item.Id, Komplekt = 1 }) |
-            @Html.ActionLink("Komplekteerimata", "KomplekteeritudMuut", new { id = item.Id, Komplekt = 0 })
+            @Html.ActionLink("Komplekteeritud", "KomplekteeritudMuut", new { id = item.Id, Komplekt = 1 })
         </td>
     </tr>
 }
