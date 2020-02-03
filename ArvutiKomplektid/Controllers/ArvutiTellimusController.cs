@@ -107,7 +107,7 @@ namespace ArvutiKomplektid.Controllers
         {
             var pakis = db.Arvutitellimused
               .Where(u => u.Korpus >= 0 && u.Kuvar >= 0 && u.Pakitud >= 0)
-              .ToList();
+              .ToList()
             return View(pakis);
         }
 
