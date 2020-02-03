@@ -194,6 +194,7 @@
     <Compile Include="Models\ArvutiTellimus.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PakimisLeht.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -262,8 +263,8 @@
     <Content Include="Views\ArvutiTellimus\Komplekteeritud.cshtml" />
     <Content Include="Views\ArvutiTellimus\Lisa.cshtml" />
     <Content Include="Views\ArvutiTellimus\KorpusKuvar.cshtml" />
-    <Content Include="Views\ArvutiTellimus\PakimisLeht.cshtml" />
     <Content Include="Views\ArvutiTellimus\Statistikaleht.cshtml" />
+    <Content Include="Views\ArvutiTellimus\PakimisLeht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

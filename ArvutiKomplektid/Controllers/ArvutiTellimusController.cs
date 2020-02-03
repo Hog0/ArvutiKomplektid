@@ -15,12 +15,13 @@ namespace ArvutiKomplektid.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
+        [AllowAnonymous]
         public ActionResult Lisa()
         {
             return View();
         }
         [HttpPost]
-        public ActionResult Lisa([Bind(Include = "Kirjeldus,Korpus,Kuvar")] ArvutiTellimus LisabUue)
+        public ActionResult Lisa([Bind(Include = "Kirjeldus")] ArvutiTellimus LisabUue)
         {
             if(ModelState.IsValid)
                 {
@@ -84,10 +85,20 @@ namespace ArvutiKomplektid.Controllers
 
         public ActionResult PakimisLeht()
         {
-            var pakis = db.Arvutitellimused
+            string[] valmis = { "", "", "Olemas", "Ei Ole Olemas" };
+            var model = db.Arvutitellimused
+              .OrderBy(u => u.Kirjeldus)
               .Where(u => u.Korpus == 1 && u.Kuvar == 1 && u.Pakitud == 0)
-              .ToList();
-            return View(pakis);
+              .Select(u => new PakimisLeht
+              {
+                  Id = u.Id,
+                  Kirjeldus = u.Kirjeldus,
+                  Komplekt = u.Komplekt, 
+                  Kuvar = u.Kuvar==0?"":u.Kuvar==1?"Olemas": "Ei Ole Olemas",
+                  Korpus = u.Korpus == 0 ? "" : u.Korpus == 1 ? "Olemas" : "Ei Ole Olemas",
+                  Pakitud = u.Pakitud == 0 ? "" : u.Pakitud == 1 ? "Pakitud" : "Ei Ole Pakitud",
+              }).ToList();
+            return View(model);
         }
 
         public ActionResult PakimisLehtMuut(int id, int pakk)
@@ -103,6 +114,7 @@ namespace ArvutiKomplektid.Controllers
             return RedirectToAction("PakimisLeht");
         }
 
+        [AllowAnonymous]
         public ActionResult Statistikaleht()
         {
             ViewBag.koikkokku = db.Arvutitellimused.Count();
