@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<ArvutiKomplektid.Models.ArvutiTellimus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "PakimisLeht";
 }
 
-<h2>Index</h2>
+<h2>PakimisLeht</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -22,9 +19,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Pakitud)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Komplekt)
         </th>
         <th></th>
     </tr>
@@ -44,12 +38,8 @@
             @Html.DisplayFor(modelItem => item.Pakitud)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Komplekt)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Pakitud", "PakimisLehtMuut", new { id = item.Id, pakk = 1 }) |
+            @Html.ActionLink("Pakimata", "PakimisLehtMuut", new { id = item.Id, pakk = 0 })
         </td>
     </tr>
 }

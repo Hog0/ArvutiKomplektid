@@ -10,6 +10,7 @@ using ArvutiKomplektid.Models;
 
 namespace ArvutiKomplektid.Controllers
 {
+    [Authorize]
     public class ArvutiTellimusController:Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,8 +20,7 @@ namespace ArvutiKomplektid.Controllers
             return View();
         }
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Lisa([Bind(Include = "Id,Kirjeldus,Korpus,Kuvar,Pakitud")] ArvutiTellimus LisabUue)
+        public ActionResult Lisa([Bind(Include = "Kirjeldus,Korpus,Kuvar")] ArvutiTellimus LisabUue)
         {
             if(ModelState.IsValid)
                 {
@@ -33,12 +33,83 @@ namespace ArvutiKomplektid.Controllers
 
         public ActionResult Komplekteerimata()
         {
-            var komplekteeritud = db.Arvutitellimused
-              .Where(u => u.Korpus == 0 || u.Kuvar == 0 || u.Pakitud == 0)
+            var komplekteerimata = db.Arvutitellimused
+              .Where(u => u.Korpus >= 0 && u.Kuvar >= 0 && u.Komplekt == -1)
               .ToList();
-            return View(komplekteeritud);
+            return View(komplekteerimata);
         }
 
+        public ActionResult Komplekteeritud()
+        {
+            var model = db.Arvutitellimused
+                       .Where(u => u.Korpus == 1 && u.Kuvar == 1 && u.Komplekt == -1)
+                       .ToList();
+            return View(model);
+        }
+
+        public ActionResult KomplekteeritudMuut(int id, int Komplekt)
+        {
+            ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
+            if (tellimus == null)
+            {
+                return HttpNotFound();
+            }
+            tellimus.Komplekt = Komplekt;
+            db.Entry(tellimus).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Komplekteeritud");
+        }
+
+        public ActionResult KorpusKuvar()
+        {
+            var model = db.Arvutitellimused
+                       .Where(u => u.Korpus == 0 || u.Kuvar == 0)
+                       .ToList();
+            return View(model);
+        }
+
+        public ActionResult KorpusKuvarMuut(int id, int kuvar, int korpus)
+        {
+            ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
+            if (tellimus == null)
+            {
+                return HttpNotFound();
+            }
+            tellimus.Kuvar = kuvar;
+            tellimus.Korpus = korpus;
+            db.Entry(tellimus).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("KorpusKuvar");
+        }
+
+        public ActionResult PakimisLeht()
+        {
+            var pakis = db.Arvutitellimused
+              .Where(u => u.Korpus == 1 && u.Kuvar == 1 && u.Pakitud == 0)
+              .ToList();
+            return View(pakis);
+        }
+
+        public ActionResult PakimisLehtMuut(int id, int pakk)
+        {
+            ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
+            if (tellimus == null)
+            {
+                return HttpNotFound();
+            }
+            tellimus.Pakitud = pakk;
+            db.Entry(tellimus).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("PakimisLeht");
+        }
+
+        public ActionResult Statistikaleht(int id)
+        {
+            var pakis = db.Arvutitellimused
+              .Where(u => u.Korpus >= 0 && u.Kuvar >= 0 && u.Pakitud >= 0)
+              .ToList();
+            return View(pakis);
+        }
 
 
         // GET: ArvutiTellimus
@@ -73,7 +144,7 @@ namespace ArvutiKomplektid.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Kirjeldus,Korpus,Kuvar,Pakitud")] ArvutiTellimus arvutiTellimus)
+        public ActionResult Create([Bind(Include = "Id,Kirjeldus,Komplekt,Korpus,Kuvar,Pakitud")] ArvutiTellimus arvutiTellimus)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +176,7 @@ namespace ArvutiKomplektid.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Kirjeldus,Korpus,Kuvar,Pakitud")] ArvutiTellimus arvutiTellimus)
+        public ActionResult Edit([Bind(Include = "Id,Kirjeldus,Komplekt,Korpus,Kuvar,Pakitud")] ArvutiTellimus arvutiTellimus)
         {
             if (ModelState.IsValid)
             {

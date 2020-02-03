@@ -1,14 +1,11 @@
 ﻿@model IEnumerable<ArvutiKomplektid.Models.ArvutiTellimus>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Komplekteeri";
 }
 
-<h2>Index</h2>
+<h2>Komplekteeri</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -19,9 +16,6 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Kuvar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pakitud)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Komplekt)
@@ -41,15 +35,11 @@
             @Html.DisplayFor(modelItem => item.Kuvar)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Pakitud)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Komplekt)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Komplekteeritud", "KomplekteeritudMuut", new { id = item.Id, Komplekt = 1 }) |
+            @Html.ActionLink("Komplekteerimata", "KomplekteeritudMuut", new { id = item.Id, Komplekt = 0 })
         </td>
     </tr>
 }

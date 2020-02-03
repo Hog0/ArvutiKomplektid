@@ -259,6 +259,15 @@
     <Content Include="Views\ArvutiTellimus\Edit.cshtml" />
     <Content Include="Views\ArvutiTellimus\Index.cshtml" />
     <Content Include="Views\ArvutiTellimus\Komplekteerimata.cshtml" />
+    <Content Include="Views\ArvutiTellimus\Komplekteeritud.cshtml" />
+    <Content Include="Views\ArvutiTellimus\Lisa.cshtml" />
+    <Content Include="Views\ArvutiTellimus\KorpusKuvar.cshtml" />
+    <Content Include="Views\ArvutiTellimus\PakimisLeht.cshtml" />
+    <Content Include="Views\ArvutiTellimus1\Create.cshtml" />
+    <Content Include="Views\ArvutiTellimus1\Delete.cshtml" />
+    <Content Include="Views\ArvutiTellimus1\Details.cshtml" />
+    <Content Include="Views\ArvutiTellimus1\Edit.cshtml" />
+    <Content Include="Views\ArvutiTellimus1\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
