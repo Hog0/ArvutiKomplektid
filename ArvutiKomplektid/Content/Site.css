@@ -5,13 +5,13 @@
     padding-top: 50px;
     padding-bottom: 20px;
     padding: 0, 20px;
-    color: #ffff;
+    color: #fff;
     font-size: 1.25rem;
     margin: 0;
     background-image: url(/img/backpicture.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.7;
+    opacity: 1;
     filter: alpha(opacity=50);
 }
 
@@ -78,5 +78,5 @@ tr:hover td {
 }
 
 hr {
-    border-top: 1px solid #ffff;
+    border-top: 1px solid #fff;
 }

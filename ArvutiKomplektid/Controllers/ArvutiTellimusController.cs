@@ -101,14 +101,14 @@ namespace ArvutiKomplektid.Controllers
             return View(model);
         }
 
-        public ActionResult PakimisLehtMuut(int id, int pakk)
+        public ActionResult PakimisLehtMuut(int id)
         {
             ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
             if (tellimus == null)
             {
                 return HttpNotFound();
             }
-            tellimus.Pakitud = pakk;
+            tellimus.Pakitud = 1;
             db.Entry(tellimus).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("PakimisLeht");
@@ -119,7 +119,7 @@ namespace ArvutiKomplektid.Controllers
         {
             ViewBag.koikkokku = db.Arvutitellimused.Count();
             ViewBag.valmis = db.Arvutitellimused
-                .Where(u => u.Pakitud == "1")
+                .Where(u => u.Pakitud == 1)
                 .Count();
             return View();
         }
