@@ -93,7 +93,7 @@ namespace ArvutiKomplektid.Controllers
               {
                   Id = u.Id,
                   Kirjeldus = u.Kirjeldus,
-                  Komplekt = u.Komplekt, 
+                  Komplekt = u.Komplekt==0?"":u.Komplekt == 1 ? "Komplekteeritud" : "Ei Ole Komplekteeritud", 
                   Kuvar = u.Kuvar==0?"":u.Kuvar==1?"Olemas": "Ei Ole Olemas",
                   Korpus = u.Korpus == 0?"":u.Korpus==1?"Olemas" : "Ei Ole Olemas",
                   Pakitud = u.Pakitud == 0?"": u.Pakitud==1?"Pakitud" : "Ei Ole Pakitud",
@@ -119,7 +119,7 @@ namespace ArvutiKomplektid.Controllers
         {
             ViewBag.koikkokku = db.Arvutitellimused.Count();
             ViewBag.valmis = db.Arvutitellimused
-                .Where(u => u.Pakitud == 1)
+                .Where(u => u.Pakitud == "1")
                 .Count();
             return View();
         }

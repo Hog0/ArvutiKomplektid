@@ -11,7 +11,7 @@ namespace ArvutiKomplektid.Models
     {
         public int Id { get; set; }
         public string Kirjeldus { get; set; }
-        public int Komplekt { get; set; }
+        public string Komplekt { get; set; }
         public string Korpus { get; set; }
         public string Kuvar { get; set; }
         public string Pakitud { get; set; }

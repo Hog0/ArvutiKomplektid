@@ -21,5 +21,10 @@ namespace ArvutiKomplektid.Models
         public int Kuvar { get; set; } = 0;
         [Range(0, 1)]
         public int Pakitud { get; set; } = 0;
+
+        internal string ToString(object pakitud)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
