@@ -69,15 +69,41 @@ namespace ArvutiKomplektid.Controllers
             return View(model);
         }
 
-        public ActionResult KorpusKuvarMuut(int id, int kuvar, int korpus)
+        public ActionResult KorpusKuvarMuut(int id)
         {
             ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
             if (tellimus == null)
             {
                 return HttpNotFound();
             }
-            tellimus.Kuvar = kuvar;
-            tellimus.Korpus = korpus;
+            tellimus.Korpus =  1;
+            tellimus.Kuvar = 1;
+            db.Entry(tellimus).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("KorpusKuvar");
+        }
+
+        public ActionResult KuvarMuut(int id)
+        {
+            ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
+            if (tellimus == null)
+            {
+                return HttpNotFound();
+            }
+            tellimus.Kuvar = 1;
+            db.Entry(tellimus).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("KorpusKuvar");
+        }
+
+        public ActionResult KorpusMuut(int id)
+        {
+            ArvutiTellimus tellimus = db.Arvutitellimused.Find(id);
+            if (tellimus == null)
+            {
+                return HttpNotFound();
+            }
+            tellimus.Korpus = 1;
             db.Entry(tellimus).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("KorpusKuvar");

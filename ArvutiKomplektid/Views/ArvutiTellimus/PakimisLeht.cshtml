@@ -32,8 +32,14 @@
             @Html.DisplayFor(modelItem => item.Kirjeldus)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Komplekt)
-        </td>
+            @if (item.Komplekt == "Ei Ole Komplekteeritud")
+            {
+                @Html.DisplayFor(modelItem => item.Komplekt)
+            }
+            else
+            {
+                @Html.DisplayFor(modelItem => item.Komplekt)
+            }
         <td>
             @Html.DisplayFor(modelItem => item.Korpus)
         </td>
@@ -44,7 +50,10 @@
             @Html.DisplayFor(modelItem => item.Pakitud)
         </td>
         <td>
-            @Html.ActionLink("Pakitud", "PakimisLehtMuut", new { id = item.Id})
+            @if(item.Komplekt != "Ei Ole Komplekteeritud")
+            {
+                @Html.ActionLink("Pakitud", "PakimisLehtMuut", new { id = item.Id })
+            }
         </td>
     </tr>
 }

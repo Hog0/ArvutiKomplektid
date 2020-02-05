@@ -32,9 +32,9 @@
             @Html.DisplayFor(modelItem => item.Kuvar)
         </td>
         <td>
-            @Html.ActionLink("Valmis Korpus", "KorpusKuvarMuut", new { id = item.Id, korpus = 1 , kuvar = 0})/
-            @Html.ActionLink("Valmis Kuvar", "KorpusKuvarMuut", new { id = item.Id, kuvar = 1 , korpus = 0})/
-            @Html.ActionLink("Mõlemad Valmis", "KorpusKuvarMuut", new { id = item.Id, kuvar = 1, korpus = 1 })
+            @Html.ActionLink("Valmis Korpus", "KorpusMuut", new { id = item.Id})/
+            @Html.ActionLink("Valmis Kuvar", "KuvarMuut", new { id = item.Id})/
+            @Html.ActionLink("Mõlemad Valmis", "KorpusKuvarMuut", new { id = item.Id})
         </td>
     </tr>
 }
