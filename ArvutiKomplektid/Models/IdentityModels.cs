@@ -28,6 +28,7 @@ namespace ArvutiKomplektid.Models
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
-        }public DbSet<ArvutiTellimus> Arvutitellimused { get; set; }
+        }
+        public DbSet<ArvutiTellimus> Arvutitellimused { get; set; }
     }
 }
